@@ -6,4 +6,7 @@
 	<sqlMap resource="egovframework/sqlmap/com/cmm/use/EgovCmmUse_SQL_Mysql.xml"/>		
 	
 	<sqlMap resource="egovframework/sqlmap/com/cmm/fms/EgovFile_SQL_Mysql.xml"/>	
+	
+	<sqlMap resource="egovframework/sqlmap/student/Student_SQL.xml"/>	
+	
 </sqlMapConfig>

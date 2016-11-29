@@ -12,7 +12,7 @@
 		<result property="name" column="name" columnIndex="3"/>
 	</resultMap>
 	
-	<insert id="studentDAO.insertStudent_S">
+	<insert id="insert">
 		<![CDATA[
 			INSERT INTO student 
 				( no
@@ -24,61 +24,15 @@
 		]]>
 	</insert>
 	
-	<update id="studentDAO.updateStudent_S">
-		<![CDATA[
-			UPDATE student
-			SET no=#no#
-				, number=#number#
-				, name=#name#
-						WHERE no=#no#
-				]]>
-	</update>
-	
-	<delete id="studentDAO.deleteStudent_S">
-		<![CDATA[
-			DELETE FROM student 
-						WHERE no=#no#
-				]]>
-	</delete>
-	
-	<select id="studentDAO.selectStudent_S" resultMap="student">
+	<select id="select" resultMap="student">
 		<![CDATA[
 			SELECT
 				no
 				, number
 				, name
-			FROM student
-						WHERE no=#no#
+			FROM student order by no DESC
+						
 				]]>
-	</select>
-	
-	<select id="studentDAO.selectStudentList_D" parameterClass="studentSerarchVO" resultClass="egovMap">
-			SELECT
-								no
-								, number
-								, name
-					FROM student
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				no = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				number LIKE CONCAT('%',#searchKeyword#,'%')
-			</isEqual>
-				ORDER BY 
-						no DESC
-					limit #firstIndex#, #recordCountPerPage#	
-	</select>	
-	<select id="studentDAO.selectStudentListTotCnt_S" parameterClass="studentSerarchVO" resultClass="int">
-			SELECT COUNT(*) totcnt
-			FROM student
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				no = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				number LIKE CONCAT('%',#searchKeyword#,'%')
-			</isEqual>
 	</select>
 
 </sqlMap>
