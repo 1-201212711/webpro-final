@@ -98,7 +98,7 @@
 <body>
 	<div data-role='page' id='studentList' data-theme='c'>
 		<div data-role='header'>
-			<a data-ajax='false' data-icon='action' data-iconpos='notext' href="javascript:fn_egov_addView();">등록</a>
+			<a data-ajax='false' data-icon='action' data-iconpos='notext' href="/web1/student/addStudentView.do">등록</a>
 			<h3>학생 정보 목록</h3>		
 		</div>
 		<div data-role='content'>		
@@ -146,7 +146,7 @@
 						</table>
 					</div>			
 					<ul data-role='listview' data-inset='true' data-theme='c'>
-						<li data-role='listview-driver'><a data-ajax='false' data-type='button' href="javascript:fn_egov_addView();">등록</a></li>
+						<li data-role='listview-driver'><a data-ajax='false' data-type='button' href="/web1/student/addStudentView.do">등록</a></li>
 					</ul>
 				</div>
 			</form:form>
