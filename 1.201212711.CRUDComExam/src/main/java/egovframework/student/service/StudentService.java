@@ -30,6 +30,6 @@ public interface StudentService {
 	 * @return student 목록
 	 * @exception Exception
 	 */
-    List<StudentVO> selectStudent() throws Exception;
+    List<?> selectStudentList() throws Exception;
     
 }

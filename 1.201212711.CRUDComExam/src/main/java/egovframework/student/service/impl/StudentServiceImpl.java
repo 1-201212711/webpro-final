@@ -2,12 +2,13 @@ package egovframework.student.service.impl;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.student.service.StudentDAO;
 import egovframework.student.service.StudentService;
 import egovframework.student.StudentVO;
@@ -25,12 +26,12 @@ import egovframework.student.StudentVO;
  *  Copyright (C)  All right reserved.
  */
 
-@Service
-public class StudentServiceImpl implements StudentService {
+@Service("studentService")
+public class StudentServiceImpl extends EgovAbstractServiceImpl implements StudentService {
         
     private static final Logger LOGGER = LoggerFactory.getLogger(StudentServiceImpl.class);
 
-    @Inject
+    @Resource(name="studentDAO")
     private StudentDAO studentDAO;
     
 	/**
@@ -51,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
 	 * @return student 목록
 	 * @exception Exception
 	 */
-    public List<StudentVO> selectStudent() throws Exception {
+    public List<?> selectStudentList() throws Exception {
         return studentDAO.selectStudent();
     }
 

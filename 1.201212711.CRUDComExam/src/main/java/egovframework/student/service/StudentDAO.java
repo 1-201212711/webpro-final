@@ -2,11 +2,10 @@ package egovframework.student.service;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
+import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import egovframework.student.StudentVO;
 
 /**
@@ -20,12 +19,9 @@ import egovframework.student.StudentVO;
  * @see Copyright (C) All right reserved.
  */
 
-@Repository
-public class StudentDAO {
+@Repository("studentDAO")
+public class StudentDAO extends EgovComAbstractDAO{
 
-	@Inject
-	private SqlSession session;
-	
 	/**
 	 * student을 등록한다.
 	 * 
@@ -34,7 +30,7 @@ public class StudentDAO {
 	 * @exception Exception
 	 */
 	public void insertStudent(StudentVO vo) throws Exception {
-		session.insert("Student_SQL.insert", vo);
+		insert("insert", vo);
 	}
 
 	/**
@@ -43,8 +39,8 @@ public class StudentDAO {
 	 * @return student 목록
 	 * @exception Exception
 	 */
-	public List<StudentVO> selectStudent() throws Exception {
-		return session.selectList("Student_SQL.select");
+	public List<?> selectStudent() throws Exception {
+		return list("select");
 	}
 
 }

@@ -50,6 +50,7 @@ function fn_egov_delete() {
    	document.getElementById("detailForm").action = "<c:url value='/student/deleteStudent.do'/>";
    	document.getElementById("detailForm").submit();		
 }
+-->
 
 /* 글 등록 function */
 function fn_egov_save() {	
@@ -57,11 +58,12 @@ function fn_egov_save() {
 
 	/* TODO Validation기능 보완 */
 	
-  	frm.action = "<c:url value="${registerFlag == '등록' ? '/student/addStudent.do' : '/student/updateStudent.do'}"/>";
+  	frm.action = "/CRUDComExam/student/addStudent.do";
     frm.submit();
 
 }
--->
+
+
 
 
 </script>

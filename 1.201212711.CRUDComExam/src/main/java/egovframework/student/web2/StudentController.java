@@ -1,11 +1,12 @@
-package egovframework.student.egovweb;
+package egovframework.student.web2;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -28,7 +29,7 @@ import egovframework.student.service.StudentService;
 @SessionAttributes(types = StudentVO.class)
 public class StudentController {
 
-	@Inject
+	@Resource(name = "studentService")
 	private StudentService studentService;
 
 	/**
@@ -38,9 +39,9 @@ public class StudentController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value = "/student/StudentList.do")
-	public String selectStudentList(Model model) throws Exception {
+	public String selectStudentList(ModelMap model) throws Exception {
 
-		List<?> studentList = studentService.selectStudent();
+		List<?> studentList = studentService.selectStudentList();
 		model.addAttribute("resultList", studentList);
 
 		return "/student/StudentList";
